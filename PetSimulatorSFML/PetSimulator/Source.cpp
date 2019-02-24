@@ -100,9 +100,7 @@ int main(void)
 			consume.setreleasedXAndY(500, 550);			
 			Orc->setHunger(150.0);			
 			Orc->setThirst(150.0);
-			Orc->setEnergy(150.0);
-			
-			
+			Orc->setEnergy(150.0);			
 
 			//background.drawBackground(window, Hamburger, Water, grass, toolBar);
 		    background.drawGrassOnly(window, grass);
@@ -181,9 +179,13 @@ int main(void)
 			{
 				choice = 2;
 			}
+			if (Orc->getEnergy() == 0)
+			{
+				choice = 3;
+			}
 			//////////////////////////////////////
 		}
-		else
+		else if (choice == 2)
 		{
 			background.drawGrassOnly(window, grass);
 			menu.DisplayGameOver(window);
@@ -192,7 +194,16 @@ int main(void)
 				choice = 0;				
 			}
 		}
+		else
+		{
+			background.drawGrassOnly(window, grass);
+			menu.DisplayWin(window);
 
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) || sf::Mouse::isButtonPressed(sf::Mouse::Left))
+			{
+				choice = 0;
+			}
+		}
 
 		window.display();
 	}
