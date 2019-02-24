@@ -14,6 +14,7 @@ public:
 	double getHunger();
 	double getThirst();
 	sf::Sprite & getCreature();
+	sf::Vector2f getvelocity();
 
 	void setHealth(double hp);
 	void setEnergy(double energy);

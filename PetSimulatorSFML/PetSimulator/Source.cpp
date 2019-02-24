@@ -101,8 +101,13 @@ int main(void)
 		//////////////////////////////////////////////////////////////////////////////////////////////
 		window.display();
 		count++;
-		if (count > 120)
+		if (count > 120) {
 			count = 0;
+			//system("cls");
+			std::cout << "Velocity: " << Orc->getvelocity().x << ", " << Orc->getvelocity().y << std::endl;
+			//std::cout << "Position: " << Orc->getCreature().getPosition().x << ", " << Orc->getCreature().getPosition().y << std::endl;
+		}
+
 	}
 
 }

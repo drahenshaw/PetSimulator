@@ -172,3 +172,8 @@ void Creature::setDirection(sf::Vector2f newDirection)
 	else
 		this->velocity = newDirection * 50.f;*/
 }
+
+sf::Vector2f Creature::getvelocity()
+{
+	return this->velocity;
+}
