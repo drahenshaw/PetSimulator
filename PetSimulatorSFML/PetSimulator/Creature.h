@@ -9,16 +9,17 @@ public:
 	Creature();
 	Creature(int health, int energy, int hunger, int thirst, sf::Sprite newCreature);
 
-	int getHealth();
-	int getEnergy();
-	int getHunger();
-	int getThirst();
+	double getHealth();
+	double getEnergy();
+	double getHunger();
+	double getThirst();
 	sf::Sprite & getCreature();
+	sf::Vector2f getvelocity();
 
-	void setHealth(int hp);
-	void setEnergy(int energy);
-	void setHunger(int hunger);
-	void setThirst(int thirst);
+	void setHealth(double hp);
+	void setEnergy(double energy);
+	void setHunger(double hunger);
+	void setThirst(double thirst);
 	void setCreature(sf::Sprite newCreature);
 	void setDirection(sf::Vector2f newDirection);
 	void setTick(int count);
@@ -27,10 +28,10 @@ public:
 	void Update(float dT);
 
 private:
-	int health;
-	int energy;
-	int hunger;
-	int thirst;
+	double health;
+	double energy;
+	double hunger;
+	double thirst;
 
 	int ticks;
 

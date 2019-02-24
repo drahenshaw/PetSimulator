@@ -56,19 +56,19 @@ sf::RectangleShape health_bars::getOutline(int i)
 	return this->outline[i];
 }
 
-void health_bars::setHealth(int creatureHealth)
+void health_bars::setHealth(double creatureHealth)
 {
 	this->health.setSize(sf::Vector2f(creatureHealth*150/150.0, 10));
 }
-void health_bars::setEnergy(int creatureHealth)
+void health_bars::setEnergy(double creatureHealth)
 {
-	this->energy.setSize(sf::Vector2f(creatureHealth / 150, 10));
+	this->energy.setSize(sf::Vector2f(creatureHealth*150 / 150, 10));
 }
-void health_bars::setHunger(int creatureHealth)
+void health_bars::setHunger(double creatureHealth)
 {
-	this->hunger.setSize(sf::Vector2f(creatureHealth / 150, 10));
+	this->hunger.setSize(sf::Vector2f(creatureHealth*150 / 150, 10));
 }
-void health_bars::setThirst(int creatureHealth)
+void health_bars::setThirst(double creatureHealth)
 {
-	this->thirst.setSize(sf::Vector2f(creatureHealth / 150, 10));
+	this->thirst.setSize(sf::Vector2f(creatureHealth*150 / 150, 10));
 }
