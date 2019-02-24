@@ -159,9 +159,9 @@ void Creature::Update(float dT)
 	//else
 	 position += velocity * dT;
 
-	 if (this->velocity.x < 0)
+	 if (this->velocity.x < 0 && Physics::Absolute(this->velocity.x) > (Physics::Absolute(this->velocity.y)))
 		 this->currentAnimation = Animation::AnimationIndex::WALKING_LEFT;
-	 if (this->velocity.x > 0)
+	 if (this->velocity.x > 0 && Physics::Absolute(this->velocity.x) > (Physics::Absolute(this->velocity.y)))
 		 this->currentAnimation = Animation::AnimationIndex::WALKING_RIGHT;
 	 if (this->velocity.y > 0 && Physics::Absolute(this->velocity.x) < (Physics::Absolute(this->velocity.y)))
 		 this->currentAnimation = Animation::AnimationIndex::WALKING_DOWN;
