@@ -3,7 +3,7 @@
 
 #include "Creature.h"
 #include "Animation.h"
-
+#include "Health_Bars.h"
 
 int main(void)
 {
@@ -13,7 +13,8 @@ int main(void)
 
 	sf::RenderWindow window(sf::VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT), "SFML works!");
 	sf::Texture texture;
-	
+	health_bars bars;
+
 	texture.loadFromFile("Assets/grass block.jpg");
 	
 
@@ -50,6 +51,14 @@ int main(void)
 			}
 		}
 		sprite.setPosition(0, 0);
+
+		window.draw(bars.getEnergy());
+		window.draw(bars.getHealth());
+		window.draw(bars.getHunger());
+		window.draw(bars.getThirst());
+
+		for (int i = 0; i < 4; i++)
+			window.draw(bars.getOutline(i));
 		
 		window.display();
 
