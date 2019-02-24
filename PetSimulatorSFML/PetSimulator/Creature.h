@@ -2,6 +2,7 @@
 #define PETSIMULATOR_CREATURE
 
 #include "Animation.h"
+#include "Consumables.h"
 
 class Creature
 {
@@ -25,7 +26,9 @@ public:
 	void setTick(int count);
 
 	void Render(sf::RenderTarget & target);
-	void Update(float dT);
+	void Update(float dT, Consumables placed);
+
+	
 
 private:
 	double health;

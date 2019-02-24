@@ -63,7 +63,7 @@ int main(void)
 			timePoint = newTimePoint;
 		}
 
-		Orc->Update(dt);
+		Orc->Update(dt, consume);
 		if (count % 100 == 0) {
 			if(Orc->getHunger() < 50)
 				Orc->setHealth(Orc->getHealth() - 1);
@@ -101,7 +101,7 @@ int main(void)
 			{
 				Orc->setThirst(150.0);
 			}
-			
+			consume.setIs_placed(false);
 		}
 	
 

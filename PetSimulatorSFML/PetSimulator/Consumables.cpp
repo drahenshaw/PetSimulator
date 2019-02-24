@@ -24,11 +24,13 @@ void Consumables::drawConsumable(sf::RenderWindow &window, sf::Sprite &Hamburger
 		{
 			Hamburger.setPosition(xreleased, yreleased);
 			window.draw(Hamburger);
+			this->is_placed = true;
 		}
 		else if (x >= 250 && x <= 350 && y <= 700 && y >= 400 && yreleased <= 500)
 		{
 			Water.setPosition(xreleased, yreleased);
 			window.draw(Water);
+			this->is_placed = true;
 		}
 	}
 }
