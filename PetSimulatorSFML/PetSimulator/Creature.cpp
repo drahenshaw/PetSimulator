@@ -120,6 +120,7 @@ void Creature::Update(float dT)
 	if (this->getCreature().getPosition().x <= -10){// || (this->getCreature().getPosition().x >= 800 /*|| this->getCreature().getPosition().x >= 725*/)) {
 		this->velocity = -this->velocity;
 		this->position.x = -this->position.x;
+		
 		//setDirection(this->getCreature().getPosition());
 		//this->creature.setPosition(position / 60.f);
 	}
@@ -156,6 +157,11 @@ void Creature::Update(float dT)
 	 }
 	//else
 	 position += velocity * dT;
+
+	 if (this->velocity.x < 0)
+		 this->currentAnimation = Animation::AnimationIndex::WALKING_LEFT;
+	 else if (this->velocity.x > 0)
+		 this->currentAnimation = Animation::AnimationIndex::WALKING_RIGHT;
 	 
 	this->creature.setPosition(position/100.f);
 }
