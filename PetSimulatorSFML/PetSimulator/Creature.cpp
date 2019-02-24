@@ -9,6 +9,14 @@ Creature::Creature()
 
 	this->creature;
 	this->currentAnimation = Animation::AnimationIndex::WALKING_DOWN;
+
+	this->creature.setPosition(sf::Vector2f(400, 300));
+
+	this->position.x = 368;
+	this->position.y = 268;
+
+	//this->randDir.x = 1;
+	//this->randDir.y = 1;
 }
 Creature::Creature(int health, int energy, int hunger, int thirst, sf::Sprite newCreature)
 {
@@ -71,6 +79,11 @@ void Creature::setCreature(sf::Sprite newCreature)
 {
 	this->creature = newCreature;
 }
+void Creature::setTick(int count)
+{
+	this->ticks = count;
+}
+
 
 void Creature::Render(sf::RenderTarget & target)
 {
@@ -79,6 +92,24 @@ void Creature::Render(sf::RenderTarget & target)
 
 void Creature::Update(float dT)
 {
+	
+	if (this->ticks == 100)
+	{
+		sf::Vector2f randDir;
+		randDir.x = rand() % 50;
+		randDir.y = rand() % 50;
+		setDirection(randDir);
+	}
+	//else
+		//setDirection(velocity);
+	
+	position = velocity * dT;
 	animations_[int(currentAnimation)].Update(dT, 0);
 	animations_[int(currentAnimation)].ApplyToSprite(creature);
+	this->creature.setPosition(position);
+}
+
+void Creature::setDirection(sf::Vector2f newDirection)
+{
+	this->velocity = newDirection * 100.f;
 }

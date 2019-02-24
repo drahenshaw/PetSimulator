@@ -4,11 +4,14 @@
 #include "Health_Bars.h"
 #include "Consumables.h"
 
+
+
 int main(void)
 {
 	//Screen dimensions
 	constexpr int SCREEN_WIDTH = 800;
 	constexpr int SCREEN_HEIGHT = 600;
+	int count = 0;
 
 	sf::RenderWindow window(sf::VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT), "SFML works!");
 	sf::Texture texture;
@@ -52,8 +55,10 @@ int main(void)
 			if (event.type == sf::Event::Closed)
 				window.close();
 		}
+		Orc->setTick(count);
 
 		Orc->Update(.001);
+
 
 		window.clear();
 
@@ -77,7 +82,9 @@ int main(void)
 		window.draw(Water);
 		window.draw(Hamburger);
 
-		Orc->Render(window);
+		
+			Orc->Render(window);
+
 		window.draw(bars.getEnergy());
 		window.draw(bars.getHealth());
 		window.draw(bars.getHunger());
@@ -87,7 +94,9 @@ int main(void)
 			window.draw(bars.getOutline(i));
 		
 		window.display();
-
+		count++;
+		if (count > 100)
+			count = 0;
 	}
 
 }
