@@ -6,7 +6,7 @@
 #include "Health_Bars.h"
 #include "Consumables.h"
 #include "Physics.h"
-
+#include "Menu.h"
 
 int main(void)
 {
@@ -16,11 +16,13 @@ int main(void)
 	background.renderBackground(window, Hamburger, Water, grass, toolBar);
 	health_bars bars;
 	Consumables consume;
-
+	Menu menu;
+	int choice = 0;
+	menu.renderStartMenu(window);
 	sf::Texture creature;
 	creature.loadFromFile("Assets/Creature 1.png");
 	sf::Sprite orcSprite(creature);
-	Creature * Orc = new Creature(150, 150, 150, 150, orcSprite);
+	Creature * Orc = new Creature(150.0, 150.0, 150.0, 150.0, orcSprite);
 
 	int count = 0;
 
@@ -43,6 +45,7 @@ int main(void)
 				break;
 			case sf::Event::MouseButtonPressed:
 				drag = 1;
+				choice = 1;
 				consume.setValue(drag);
 				consume.setXAndY(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y);
 				break;
@@ -88,10 +91,40 @@ int main(void)
 				bars.setThirst(0);
 		}
 
-		if (Physics::isColliding(*Orc, consume))
+		//window.clear();
+
+	    if (choice == 0)
 		{
+
 			Orc->setHealth(150.0);
-			consume.setreleasedXAndY(500, 550);
+			consume.setreleasedXAndY(500, 550);			
+			Orc->setHunger(150.0);			
+			Orc->setThirst(150.0);
+			Orc->setEnergy(150.0);			
+
+			//background.drawBackground(window, Hamburger, Water, grass, toolBar);
+		    background.drawGrassOnly(window, grass);
+			menu.DisplayStartMenu(window);
+
+
+		}
+		else if(choice == 1)
+		{
+
+			Orc->setTick(count);
+
+			Orc->Update(dt);
+			if (count % 100 == 0) {
+				Orc->setHealth(Orc->getHealth() - 1);
+				bars.setHealth(Orc->getHealth());
+				if (Orc->getHealth() < 0)
+					bars.setHealth(0);
+			}
+
+			if (Physics::isColliding(*Orc, consume))
+			{
+				Orc->setHealth(150.0);
+				consume.setreleasedXAndY(500, 550);
 
 			if (consume.getType() == Consumables::itemType::FOOD)
 			{
@@ -105,41 +138,74 @@ int main(void)
 		}
 	
 
-		window.clear();
-		//Everything Drawn to screen in here
-		//////////////////////////////////////////////////////////////////////////////////////////////
-		
-		// SETTING THE BACKGROUND////////////
-		background.drawBackground(window, Hamburger, Water, grass, toolBar);
-		////////////////////////////////////
+			//Everything Drawn to screen in here
+			//////////////////////////////////////////////////////////////////////////////////////////////
 
-		
+			// SETTING THE BACKGROUND////////////
+			background.drawBackground(window, Hamburger, Water, grass, toolBar);
+			////////////////////////////////////
+
+
 			Orc->Render(window);
 
-		//
+			//
 
-		//Health
-		window.draw(bars.getEnergy());
-		window.draw(bars.getHealth());
-		window.draw(bars.getHunger());
-		window.draw(bars.getThirst());
-		for (int i = 0; i < 4; i++)
-			window.draw(bars.getOutline(i));
-		//
+			//Health
+			window.draw(bars.getEnergy());
+			window.draw(bars.getHealth());
+			window.draw(bars.getHunger());
+			window.draw(bars.getThirst());
+			for (int i = 0; i < 4; i++)
+				window.draw(bars.getOutline(i));
+			//
 
-		//new food and new water
-		consume.drawConsumable(window, Hamburger, Water);
+			//new food and new water
+			consume.drawConsumable(window, Hamburger, Water);
 
-		//////////////////////////////////////////////////////////////////////////////////////////////
-		window.display();
-		count++;
-		if (count > 120) {
-			count = 0;
-			//system("cls");
-			std::cout << "Velocity: " << Orc->getvelocity().x << ", " << Orc->getvelocity().y << std::endl;
-			//std::cout << "Position: " << Orc->getCreature().getPosition().x << ", " << Orc->getCreature().getPosition().y << std::endl;
+			//////////////////////////////////////////////////////////////////////////////////////////////
+			count++;
+			if (count > 120)
+				count = 0;
+
+			count++;
+			if (count > 120) {
+				count = 0;
+				//system("cls");
+				std::cout << "Velocity: " << Orc->getvelocity().x << ", " << Orc->getvelocity().y << std::endl;
+				//std::cout << "Position: " << Orc->getCreature().getPosition().x << ", " << Orc->getCreature().getPosition().y << std::endl;
+			}
+			//////Check if creature Died///////////
+			if (Orc->getHealth() < 0)
+			{
+				choice = 2;
+			}
+			if (Orc->getEnergy() == 0)
+			{
+				choice = 3;
+			}
+			//////////////////////////////////////
+		}
+		else if (choice == 2)
+		{
+			background.drawGrassOnly(window, grass);
+			menu.DisplayGameOver(window);
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) || sf::Mouse::isButtonPressed(sf::Mouse::Left))
+			{
+				choice = 0;				
+			}
+		}
+		else
+		{
+			background.drawGrassOnly(window, grass);
+			menu.DisplayWin(window);
+
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) || sf::Mouse::isButtonPressed(sf::Mouse::Left))
+			{
+				choice = 0;
+			}
 		}
 
+		window.display();
 	}
 
 }

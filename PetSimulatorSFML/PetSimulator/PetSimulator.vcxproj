@@ -115,6 +115,7 @@
     <ClCompile Include="Consumables.cpp" />
     <ClCompile Include="Creature.cpp" />
     <ClCompile Include="health_bars.cpp" />
+    <ClCompile Include="Menu.cpp" />
     <ClCompile Include="Physics.cpp" />
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
@@ -124,7 +125,9 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\Burger.png" />
+    <Image Include="Assets\dirt.png" />
     <Image Include="Assets\grass block.jpg" />
+    <Image Include="Assets\plants.png" />
     <Image Include="Assets\userInterface.png" />
     <Image Include="Assets\Water2.png" />
   </ItemGroup>
@@ -134,6 +137,7 @@
     <ClInclude Include="Consumables.h" />
     <ClInclude Include="Creature.h" />
     <ClInclude Include="Health_Bars.h" />
+    <ClInclude Include="Menu.h" />
     <ClInclude Include="Physics.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

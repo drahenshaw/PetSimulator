@@ -36,6 +36,9 @@
     <ClCompile Include="Physics.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Menu.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -52,6 +55,12 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="Assets\userInterface.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\dirt.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\plants.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>
@@ -72,6 +81,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Physics.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Menu.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

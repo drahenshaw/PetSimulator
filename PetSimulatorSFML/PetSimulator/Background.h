@@ -14,7 +14,8 @@ public:
 		sf::Sprite &grass, sf::Sprite &toolBar);
 	void renderGrass(sf::Sprite &grass);
 	void renderToolBar(sf::Sprite &toolBar);
-	void Background::renderConstantConsumables(sf::Sprite &Hamburger, sf::Sprite &Water);
+	void renderConstantConsumables(sf::Sprite &Hamburger, sf::Sprite &Water);
+	void drawGrassOnly(sf::RenderWindow &window, sf::Sprite &grass);
 
 private:
 	//private textures
