@@ -58,3 +58,13 @@ int Consumables::getYReleased() const
 {
 	return yreleased;
 }
+
+Consumables::itemType Consumables::getType() const
+{
+	return this->type_;
+}
+
+void Consumables::setType(Consumables::itemType what)
+{
+	this->type_ = what;
+}
