@@ -44,19 +44,19 @@ Creature::Creature(int health, int energy, int hunger, int thirst, sf::Sprite ne
 	this->creature.setPosition(position);
 }
 
-int Creature::getHealth()
+double Creature::getHealth()
 {
 	return this->health;
 }
-int Creature::getEnergy()
+double Creature::getEnergy()
 {
 	return this->energy;
 }
-int Creature::getHunger()
+double Creature::getHunger()
 {
 	return this->hunger;
 }
-int Creature::getThirst()
+double Creature::getThirst()
 {
 	return this->thirst;
 }
@@ -65,19 +65,19 @@ sf::Sprite & Creature::getCreature()
 	return this->creature;
 }
 
-void Creature::setHealth(int hp)
+void Creature::setHealth(double hp)
 {
 	this->health = hp;
 }
-void Creature::setEnergy(int energy)
+void Creature::setEnergy(double energy)
 {
 	this->energy = energy;
 }
-void Creature::setHunger(int hunger)
+void Creature::setHunger(double hunger)
 {
 	this->hunger = hunger;
 }
-void Creature::setThirst(int thirst)
+void Creature::setThirst(double thirst)
 {
 	this->thirst = thirst;
 }
@@ -157,7 +157,7 @@ void Creature::Update(float dT)
 	//else
 	 position += velocity * dT;
 	 
-	this->creature.setPosition(position/120.f);
+	this->creature.setPosition(position/100.f);
 }
 
 void Creature::setDirection(sf::Vector2f newDirection)

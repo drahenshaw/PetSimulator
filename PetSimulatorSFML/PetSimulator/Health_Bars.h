@@ -18,10 +18,10 @@ public:
 	sf::RectangleShape getThirst();
 	sf::RectangleShape getOutline(int i);
 
-	void setHealth(int creatureHealth);
-	void setEnergy(int creatureHealth);
-	void setHunger(int creatureHealth);
-	void setThirst(int creatureHealth);
+	void setHealth(double creatureHealth);
+	void setEnergy(double creatureHealth);
+	void setHunger(double creatureHealth);
+	void setThirst(double creatureHealth);
 
 private:
 	sf::RectangleShape health;
