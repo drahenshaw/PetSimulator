@@ -6,7 +6,7 @@
 #include "Health_Bars.h"
 #include "Consumables.h"
 #include "Physics.h"
-
+#include "Menu.h"
 
 int main(void)
 {
@@ -16,7 +16,9 @@ int main(void)
 	background.renderBackground(window, Hamburger, Water, grass, toolBar);
 	health_bars bars;
 	Consumables consume;
-
+	Menu menu;
+	int choice = 0;
+	menu.renderStartMenu(window);
 	sf::Texture creature;
 	creature.loadFromFile("Assets/Creature 1.png");
 	sf::Sprite orcSprite(creature);
@@ -43,6 +45,7 @@ int main(void)
 				break;
 			case sf::Event::MouseButtonPressed:
 				drag = 1;
+				choice = 1;
 				consume.setValue(drag);
 				consume.setXAndY(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y);
 				break;
@@ -53,6 +56,7 @@ int main(void)
 				break;
 			}
 		}
+<<<<<<< HEAD
 
 		Orc->setTick(count);
 
@@ -87,9 +91,13 @@ int main(void)
 			if (Orc->getThirst() < 0)
 				bars.setThirst(0);
 		}
+=======
+		window.clear();
+>>>>>>> Michael
 
-		if (Physics::isColliding(*Orc, consume))
+	    if (choice == 0)
 		{
+<<<<<<< HEAD
 			Orc->setHealth(150.0);
 			consume.setreleasedXAndY(500, 550);
 
@@ -102,36 +110,63 @@ int main(void)
 				Orc->setThirst(150.0);
 			}
 			
+=======
+			//background.drawBackground(window, Hamburger, Water, grass, toolBar);
+		    background.drawGrassOnly(window, grass);
+			menu.DisplayStartMenu(window);
+
+>>>>>>> Michael
 		}
-	
+		else
+		{
 
-		window.clear();
-		//Everything Drawn to screen in here
-		//////////////////////////////////////////////////////////////////////////////////////////////
-		
-		// SETTING THE BACKGROUND////////////
-		background.drawBackground(window, Hamburger, Water, grass, toolBar);
-		////////////////////////////////////
+			Orc->setTick(count);
 
-		
+			Orc->Update(.001);
+			if (count % 100 == 0) {
+				Orc->setHealth(Orc->getHealth() - 1);
+				bars.setHealth(Orc->getHealth());
+				if (Orc->getHealth() < 0)
+					bars.setHealth(0);
+			}
+
+			if (Physics::isColliding(*Orc, consume))
+			{
+				Orc->setHealth(150.0);
+			}
+
+
+			//Everything Drawn to screen in here
+			//////////////////////////////////////////////////////////////////////////////////////////////
+
+			// SETTING THE BACKGROUND////////////
+			background.drawBackground(window, Hamburger, Water, grass, toolBar);
+			////////////////////////////////////
+
+
 			Orc->Render(window);
 
-		//
+			//
 
-		//Health
-		window.draw(bars.getEnergy());
-		window.draw(bars.getHealth());
-		window.draw(bars.getHunger());
-		window.draw(bars.getThirst());
-		for (int i = 0; i < 4; i++)
-			window.draw(bars.getOutline(i));
-		//
+			//Health
+			window.draw(bars.getEnergy());
+			window.draw(bars.getHealth());
+			window.draw(bars.getHunger());
+			window.draw(bars.getThirst());
+			for (int i = 0; i < 4; i++)
+				window.draw(bars.getOutline(i));
+			//
 
-		//new food and new water
-		consume.drawConsumable(window, Hamburger, Water);
+			//new food and new water
+			consume.drawConsumable(window, Hamburger, Water);
 
-		//////////////////////////////////////////////////////////////////////////////////////////////
+			//////////////////////////////////////////////////////////////////////////////////////////////
+			count++;
+			if (count > 120)
+				count = 0;
+		}
 		window.display();
+<<<<<<< HEAD
 		count++;
 		if (count > 120) {
 			count = 0;
@@ -140,6 +175,8 @@ int main(void)
 			//std::cout << "Position: " << Orc->getCreature().getPosition().x << ", " << Orc->getCreature().getPosition().y << std::endl;
 		}
 
+=======
+>>>>>>> Michael
 	}
 
 }
