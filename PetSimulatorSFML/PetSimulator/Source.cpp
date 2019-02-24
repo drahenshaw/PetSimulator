@@ -34,7 +34,7 @@ int main(void)
 	Creature * Orc = new Creature(150, 150, 150, 150, orcSprite);
 
 	texture.loadFromFile("Assets/grass block.jpg");
-	
+	//Orc->getCreature().setPosition(sf::Vector2f(300, 400));
 
 	sf::Sprite sprite(texture);
 	sf::Sprite sprite2(texture2);
@@ -58,7 +58,13 @@ int main(void)
 		Orc->setTick(count);
 
 		Orc->Update(.001);
-
+		if (count % 100 == 0) {
+			Orc->setHealth(Orc->getHealth() - 1);
+			bars.setHealth(Orc->getHealth());
+			if (Orc->getHealth() < 0)
+				bars.setHealth(0);
+		}
+	
 
 		window.clear();
 
@@ -95,7 +101,7 @@ int main(void)
 		
 		window.display();
 		count++;
-		if (count > 100)
+		if (count > 120)
 			count = 0;
 	}
 

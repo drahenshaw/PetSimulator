@@ -1,4 +1,5 @@
 #include "Creature.h"
+#include <time.h>
 
 Creature::Creature()
 {
@@ -36,6 +37,11 @@ Creature::Creature(int health, int energy, int hunger, int thirst, sf::Sprite ne
 	
 	animations_[int(currentAnimation)].ApplyToSprite(this->creature);
 
+	
+
+	this->position.x = 368;
+	this->position.y = 268;
+	this->creature.setPosition(position);
 }
 
 int Creature::getHealth()
@@ -92,24 +98,77 @@ void Creature::Render(sf::RenderTarget & target)
 
 void Creature::Update(float dT)
 {
-	
-	if (this->ticks == 100)
+	srand(time(0));
+	if (this->ticks == 120)
 	{
 		sf::Vector2f randDir;
-		randDir.x = rand() % 50;
-		randDir.y = rand() % 50;
+		randDir.x = rand() % 1200;
+		if (rand() % 2 == 0)
+			randDir.x = -randDir.x;
+		randDir.y = rand() % 800;
+		if (rand() % 2 == 0)
+			randDir.y = -randDir.y;
 		setDirection(randDir);
 	}
 	//else
-		//setDirection(velocity);
+		//position += velocity * dT;
 	
-	position = velocity * dT;
+	
 	animations_[int(currentAnimation)].Update(dT, 0);
 	animations_[int(currentAnimation)].ApplyToSprite(creature);
-	this->creature.setPosition(position);
+
+	if (this->getCreature().getPosition().x <= -10){// || (this->getCreature().getPosition().x >= 800 /*|| this->getCreature().getPosition().x >= 725*/)) {
+		this->velocity = -this->velocity;
+		this->position.x = -this->position.x;
+		//setDirection(this->getCreature().getPosition());
+		//this->creature.setPosition(position / 60.f);
+	}
+	if (this->getCreature().getPosition().x >= 750) {
+		//this->velocity = -this->velocity;
+		//this->position.x = -this->position.x;
+		sf::Vector2f randDir;
+		randDir.x = rand() % 1200;
+		//if (rand() % 2 == 0)
+			randDir.x = -randDir.x;
+		randDir.y = rand() % 800;
+		if (rand() % 2 == 0)
+			randDir.y = -randDir.y;
+		setDirection(randDir);
+	}
+		
+	 if (this->getCreature().getPosition().y <= -10){// || (this->getCreature().getPosition().y >= 600/* || this->getCreature().getPosition().y >= 425*/)) {
+		 this->velocity = -this->velocity;
+		 this->position.y = -this->position.y;
+		 //setDirection(this->getCreature().getPosition());
+		//this->creature.setPosition(position / 60.f);
+	}
+	 if (this->getCreature().getPosition().y >= 450) {
+		 this->velocity = -this->velocity;
+		// this->position.y = -this->position.y;
+		 sf::Vector2f randDir;
+		 randDir.x = rand() % 1200;
+		 if (rand() % 2 == 0)
+			 randDir.x = -randDir.x;
+		 randDir.y = rand() % 800;
+		 //if (rand() % 2 == 0)
+			 randDir.y = -randDir.y;
+		 setDirection(randDir);
+	 }
+	//else
+	 position += velocity * dT;
+	 
+	this->creature.setPosition(position/120.f);
 }
 
 void Creature::setDirection(sf::Vector2f newDirection)
 {
-	this->velocity = newDirection * 100.f;
+	//if (this->creature.getPosition().x <= 0 || this->creature.getPosition().x >= 550)
+	//	this->velocity = newDirection * -50.f;
+	//else
+		this->velocity = newDirection * 50.f;
+
+	/*if (this->creature.getPosition().y <= 0 || this->creature.getPosition().y >= 650)
+		this->velocity = newDirection * -50.f;
+	else
+		this->velocity = newDirection * 50.f;*/
 }

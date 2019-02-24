@@ -58,7 +58,7 @@ sf::RectangleShape health_bars::getOutline(int i)
 
 void health_bars::setHealth(int creatureHealth)
 {
-	this->health.setSize(sf::Vector2f(creatureHealth/150, 10));
+	this->health.setSize(sf::Vector2f(creatureHealth*150/150.0, 10));
 }
 void health_bars::setEnergy(int creatureHealth)
 {
