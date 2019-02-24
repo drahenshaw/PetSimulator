@@ -115,7 +115,7 @@ int main(void)
 
 
 		}
-		else
+		else if(choice == 1)
 		{
 
 			Orc->setTick(count);
@@ -162,18 +162,29 @@ int main(void)
 			count++;
 			if (count > 120)
 				count = 0;
+
+			count++;
+			if (count > 120) {
+				count = 0;
+				//system("cls");
+				std::cout << "Velocity: " << Orc->getvelocity().x << ", " << Orc->getvelocity().y << std::endl;
+				//std::cout << "Position: " << Orc->getCreature().getPosition().x << ", " << Orc->getCreature().getPosition().y << std::endl;
+			}
+			//////Check if creature Died///////////
+			if (Orc->getHealth() < 0)
+			{
+				choice = 2;
+			}
+			//////////////////////////////////////
 		}
+		else
+		{
+			background.drawGrassOnly(window, grass);
+			menu.DisplayGameOver(window);
+		}
+
+
 		window.display();
-
-		count++;
-		if (count > 120) {
-			count = 0;
-			//system("cls");
-			std::cout << "Velocity: " << Orc->getvelocity().x << ", " << Orc->getvelocity().y << std::endl;
-			//std::cout << "Position: " << Orc->getCreature().getPosition().x << ", " << Orc->getCreature().getPosition().y << std::endl;
-		}
-
-
 	}
 
 }
