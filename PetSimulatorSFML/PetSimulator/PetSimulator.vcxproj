@@ -125,7 +125,9 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\Burger.png" />
+    <Image Include="Assets\dirt.png" />
     <Image Include="Assets\grass block.jpg" />
+    <Image Include="Assets\plants.png" />
     <Image Include="Assets\userInterface.png" />
     <Image Include="Assets\Water2.png" />
   </ItemGroup>
@@ -137,6 +139,9 @@
     <ClInclude Include="Health_Bars.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="Physics.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="Assets\Lato-Bold.ttf" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
