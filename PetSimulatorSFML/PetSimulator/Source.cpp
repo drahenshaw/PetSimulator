@@ -181,6 +181,11 @@ int main(void)
 		{
 			background.drawGrassOnly(window, grass);
 			menu.DisplayGameOver(window);
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) || sf::Mouse::isButtonPressed(sf::Mouse::Left))
+			{
+				choice = 0;
+				
+			}
 		}
 
 
