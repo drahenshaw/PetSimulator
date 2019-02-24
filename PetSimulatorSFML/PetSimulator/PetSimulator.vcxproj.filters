@@ -27,6 +27,9 @@
     <ClCompile Include="health_bars.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Consumables.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -45,6 +48,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Health_Bars.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Consumables.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
