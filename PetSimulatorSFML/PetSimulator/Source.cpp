@@ -60,6 +60,7 @@ int main(void)
 		if (Physics::isColliding(*Orc, consume))
 		{
 			Orc->setHealth(150.0);
+			consume.setreleasedXAndY(500, 550);
 		}
 	
 
