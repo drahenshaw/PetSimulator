@@ -56,7 +56,6 @@ int main(void)
 				break;
 			}
 		}
-<<<<<<< HEAD
 
 		Orc->setTick(count);
 
@@ -91,13 +90,12 @@ int main(void)
 			if (Orc->getThirst() < 0)
 				bars.setThirst(0);
 		}
-=======
+
 		window.clear();
->>>>>>> Michael
 
 	    if (choice == 0)
 		{
-<<<<<<< HEAD
+
 			Orc->setHealth(150.0);
 			consume.setreleasedXAndY(500, 550);
 
@@ -110,12 +108,12 @@ int main(void)
 				Orc->setThirst(150.0);
 			}
 			
-=======
+
 			//background.drawBackground(window, Hamburger, Water, grass, toolBar);
 		    background.drawGrassOnly(window, grass);
 			menu.DisplayStartMenu(window);
 
->>>>>>> Michael
+
 		}
 		else
 		{
@@ -166,7 +164,7 @@ int main(void)
 				count = 0;
 		}
 		window.display();
-<<<<<<< HEAD
+
 		count++;
 		if (count > 120) {
 			count = 0;
@@ -175,8 +173,7 @@ int main(void)
 			//std::cout << "Position: " << Orc->getCreature().getPosition().x << ", " << Orc->getCreature().getPosition().y << std::endl;
 		}
 
-=======
->>>>>>> Michael
+
 	}
 
 }
