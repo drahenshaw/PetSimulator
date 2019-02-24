@@ -5,9 +5,9 @@ class Menu
 public:
 	void renderStartMenu(sf::RenderWindow &window);
 	void DisplayStartMenu(sf::RenderWindow &window);
+	void DisplayGameOver(sf::RenderWindow &window);
 private:
 	sf::Text PlayGame;
-	sf::Text InstructionsHeader;
-	sf::Text InstructionsLine1;
+	sf::Text GameOver;
 	sf::Font font;
 };

@@ -55,8 +55,9 @@ int main(void)
 	    if (choice == 0)
 		{
 			//background.drawBackground(window, Hamburger, Water, grass, toolBar);
-	 	    menu.DisplayStartMenu(window);
 		    background.drawGrassOnly(window, grass);
+			menu.DisplayStartMenu(window);
+
 		}
 		else
 		{
