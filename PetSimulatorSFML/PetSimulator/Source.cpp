@@ -22,32 +22,56 @@ int main(void)
 
 
 	// Run window
-
+	int drag = 0;
 	while (window.isOpen())
 	{
 		sf::Event event;
 		while (window.pollEvent(event))
 		{
-			if (event.type == sf::Event::Closed)
+			switch (event.type)
+			{
+			case sf::Event::Closed:
 				window.close();
+				break;
+			case sf::Event::MouseButtonPressed:
+				drag = 1;
+				consume.setValue(drag);
+				consume.setXAndY(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y);
+				break;
+			case sf::Event::MouseButtonReleased:
+				drag = 0;
+				consume.setValue(drag);
+				consume.setreleasedXAndY(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y);
+				break;
+			}
 		}
-
 		Orc->Update(.001);
 
 		window.clear();
-
+		//Everything Drawn to screen in here
+		//////////////////////////////////////////////////////////////////////////////////////////////
+		
 		// SETTING THE BACKGROUND////////////
 		background.drawBackground(window, Hamburger, Water, grass, toolBar);
+		////////////////////////////////////
 
+		//orc
 		Orc->Render(window);
+		//
+
+		//Health
 		window.draw(bars.getEnergy());
 		window.draw(bars.getHealth());
 		window.draw(bars.getHunger());
 		window.draw(bars.getThirst());
-
 		for (int i = 0; i < 4; i++)
 			window.draw(bars.getOutline(i));
-		
+		//
+
+		//new food and new water
+		consume.drawConsumable(window, Hamburger, Water);
+
+		//////////////////////////////////////////////////////////////////////////////////////////////
 		window.display();
 
 	}

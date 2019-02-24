@@ -2,15 +2,21 @@
 #define PETSIMULATOR_CONSUMABLES
 
 #include "SFML/Graphics.hpp"
+#include "Background.h"
 
-class Consumables
+class Consumables : public Background
 {
 public:
-	Consumables();
-	void loadConsumables(sf::Texture all[2]);
-	sf::Texture getTexture(int whichone);
+	void drawConsumable(sf::RenderWindow &window, sf::Sprite &Hamburger, sf::Sprite &Water);
+	void setValue(int newMousePressed);
+	void setXAndY(int newx, int newy);
+	void setreleasedXAndY(int newx, int newy);
 private:
-	sf::Texture all[10];
+	int mousePressed;
+	int x;
+	int y;
+	int xreleased;
+	int yreleased;
 };
 
 #endif
