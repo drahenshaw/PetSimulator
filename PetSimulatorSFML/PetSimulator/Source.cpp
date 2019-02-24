@@ -72,7 +72,7 @@ int main(void)
 
 			Orc->setEnergy(Orc->getEnergy() - .25);
 			Orc->setHunger(Orc->getHunger() - .5);
-			Orc->setThirst(Orc->getHunger() - 1);
+			Orc->setThirst(Orc->getThirst() - 1);
 			Orc->setHealth(Orc->getHealth() - 1 * dt);
 			bars.setHealth(Orc->getHealth());
 			bars.setEnergy(Orc->getEnergy());
@@ -92,6 +92,16 @@ int main(void)
 		{
 			Orc->setHealth(150.0);
 			consume.setreleasedXAndY(500, 550);
+
+			if (consume.getType() == Consumables::itemType::FOOD)
+			{
+				Orc->setHunger(150.0);
+			}
+			else
+			{
+				Orc->setThirst(150.0);
+			}
+			
 		}
 	
 

@@ -9,11 +9,13 @@ void Consumables::drawConsumable(sf::RenderWindow &window, sf::Sprite &Hamburger
 		{
 			Hamburger.setPosition(sf::Mouse::getPosition(window).x -12, sf::Mouse::getPosition(window).y - 12);
 			window.draw(Hamburger);
+			this->type_ = itemType::FOOD;
 		}
 		else if (x >= 250 && x <= 350 && y <= 700 && y >= 400)
 		{
 			Water.setPosition(sf::Mouse::getPosition(window).x - 22, sf::Mouse::getPosition(window).y - 15);
 			window.draw(Water);
+			this->type_ = itemType::DRINK;
 		}
 	}
 	else
