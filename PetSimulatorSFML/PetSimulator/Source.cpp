@@ -57,6 +57,40 @@ int main(void)
 			}
 		}
 
+		Orc->setTick(count);
+
+		float dt;
+		{
+			const auto newTimePoint = std::chrono::steady_clock::now();
+			dt = std::chrono::duration<float>(newTimePoint - timePoint).count();
+			timePoint = newTimePoint;
+		}
+
+		Orc->Update(dt);
+		if (count % 100 == 0) {
+			if(Orc->getHunger() < 50)
+				Orc->setHealth(Orc->getHealth() - 1);
+			if (Orc->getThirst() < 40)
+				Orc->setHealth(Orc->getHealth() - 1);
+
+			Orc->setEnergy(Orc->getEnergy() - .25);
+			Orc->setHunger(Orc->getHunger() - .5);
+			Orc->setThirst(Orc->getThirst() - 1);
+			Orc->setHealth(Orc->getHealth() - 1 * dt);
+			bars.setHealth(Orc->getHealth());
+			bars.setEnergy(Orc->getEnergy());
+			bars.setHunger(Orc->getHunger());
+			bars.setThirst(Orc->getThirst());
+			if (Orc->getHealth() < 0)
+				bars.setHealth(0);
+			if (Orc->getEnergy() < 0)
+				bars.setEnergy(0);
+			if (Orc->getHunger() < 0)
+				bars.setHunger(0);
+			if (Orc->getThirst() < 0)
+				bars.setThirst(0);
+		}
+
 		window.clear();
 
 	    if (choice == 0)
@@ -83,40 +117,6 @@ int main(void)
 		}
 		else
 		{
-			Orc->setTick(count);
-
-			float dt;
-			{
-				const auto newTimePoint = std::chrono::steady_clock::now();
-				dt = std::chrono::duration<float>(newTimePoint - timePoint).count();
-				timePoint = newTimePoint;
-			}
-
-			Orc->Update(dt);
-			if (count % 100 == 0) {
-				if (Orc->getHunger() < 50)
-					Orc->setHealth(Orc->getHealth() - 1);
-				if (Orc->getThirst() < 40)
-					Orc->setHealth(Orc->getHealth() - 1);
-
-				Orc->setEnergy(Orc->getEnergy() - .25);
-				Orc->setHunger(Orc->getHunger() - .5);
-				Orc->setThirst(Orc->getThirst() - 1);
-				Orc->setHealth(Orc->getHealth() - 1 * dt);
-				bars.setHealth(Orc->getHealth());
-				bars.setEnergy(Orc->getEnergy());
-				bars.setHunger(Orc->getHunger());
-				bars.setThirst(Orc->getThirst());
-				if (Orc->getHealth() < 0)
-					bars.setHealth(0);
-				if (Orc->getEnergy() < 0)
-					bars.setEnergy(0);
-				if (Orc->getHunger() < 0)
-					bars.setHunger(0);
-				if (Orc->getThirst() < 0)
-					bars.setThirst(0);
-			}
-
 
 			Orc->setTick(count);
 

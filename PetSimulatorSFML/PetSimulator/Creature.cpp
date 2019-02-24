@@ -1,4 +1,5 @@
 #include "Creature.h"
+#include "Physics.h"
 #include <time.h>
 
 Creature::Creature()
@@ -160,8 +161,13 @@ void Creature::Update(float dT)
 
 	 if (this->velocity.x < 0)
 		 this->currentAnimation = Animation::AnimationIndex::WALKING_LEFT;
-	 else if (this->velocity.x > 0)
+	 if (this->velocity.x > 0)
 		 this->currentAnimation = Animation::AnimationIndex::WALKING_RIGHT;
+	 if (this->velocity.y > 0 && Physics::Absolute(this->velocity.x) < (Physics::Absolute(this->velocity.y)))
+		 this->currentAnimation = Animation::AnimationIndex::WALKING_DOWN;
+	 if (this->velocity.y < 0 && Physics::Absolute(this->velocity.x) < (Physics::Absolute(this->velocity.y)))
+		 this->currentAnimation = Animation::AnimationIndex::WALKING_UP;
+	
 	 
 	this->creature.setPosition(position/100.f);
 }
@@ -171,7 +177,7 @@ void Creature::setDirection(sf::Vector2f newDirection)
 	//if (this->creature.getPosition().x <= 0 || this->creature.getPosition().x >= 550)
 	//	this->velocity = newDirection * -50.f;
 	//else
-		this->velocity = newDirection * 50.f;
+		this->velocity = newDirection * 10.f;
 
 	/*if (this->creature.getPosition().y <= 0 || this->creature.getPosition().y >= 650)
 		this->velocity = newDirection * -50.f;
