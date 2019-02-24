@@ -20,6 +20,7 @@ int main(void)
 	sf::Sprite orcSprite(creature);
 	Creature * Orc = new Creature(150, 150, 150, 150, orcSprite);
 
+	int count = 0;
 
 	// Run window
 	int drag = 0;
