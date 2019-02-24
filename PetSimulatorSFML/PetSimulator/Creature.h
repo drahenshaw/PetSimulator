@@ -1,5 +1,6 @@
-#pragma once
-#include <SFML\Graphics.hpp>
+#ifndef PETSIMULATOR_CREATURE
+#define PETSIMULATOR_CREATURE
+
 #include "Animation.h"
 
 class Creature
@@ -34,3 +35,5 @@ private:
 	Animation::AnimationIndex currentAnimation = Animation::AnimationIndex::WALKING_DOWN;
 
 };
+
+#endif

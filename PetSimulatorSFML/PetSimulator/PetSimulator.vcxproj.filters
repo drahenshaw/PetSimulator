@@ -39,6 +39,15 @@
     <Image Include="Assets\grass block.jpg">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="Assets\Burger.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\Water2.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\userInterface.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">

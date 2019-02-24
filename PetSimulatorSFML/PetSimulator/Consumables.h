@@ -1,6 +1,7 @@
-#pragma once
-#include <iostream>
-#include <SFML/Graphics.hpp>
+#ifndef PETSIMULATOR_CONSUMABLES
+#define PETSIMULATOR_CONSUMABLES
+
+#include "SFML/Graphics.hpp"
 
 class Consumables
 {
@@ -11,3 +12,5 @@ public:
 private:
 	sf::Texture all[10];
 };
+
+#endif

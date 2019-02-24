@@ -1,8 +1,6 @@
 #include <iostream>
-#include <SFML/Graphics.hpp>
 
 #include "Creature.h"
-#include "Animation.h"
 #include "Health_Bars.h"
 #include "Consumables.h"
 

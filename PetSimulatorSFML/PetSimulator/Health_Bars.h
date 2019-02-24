@@ -1,6 +1,7 @@
-#pragma once
-#include <SFML\Graphics.hpp>
-#include "Creature.h"
+#ifndef PETSIMULATOR_HEAlTHBARS
+#define PETSIMULATOR_HEALTHBARS
+
+#include "SFML/Graphics.hpp"
 
 class health_bars
 {
@@ -30,3 +31,5 @@ private:
 
 	sf::RectangleShape outline[4];
 };
+
+#endif
