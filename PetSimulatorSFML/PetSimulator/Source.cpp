@@ -1,4 +1,5 @@
 #include <iostream>
+#include <chrono>
 
 #include "Background.h"
 #include "Creature.h"
@@ -23,8 +24,13 @@ int main(void)
 
 	int count = 0;
 
+
 	// Run window
 	int drag = 0;
+
+
+	auto timePoint = std::chrono::steady_clock::now();
+
 	while (window.isOpen())
 	{
 		sf::Event event;
@@ -47,11 +53,19 @@ int main(void)
 				break;
 			}
 		}
+
 		Orc->setTick(count);
 
-		Orc->Update(.001);
+		float dt;
+		{
+			const auto newTimePoint = std::chrono::steady_clock::now();
+			dt = std::chrono::duration<float>(newTimePoint - timePoint).count();
+			timePoint = newTimePoint;
+		}
+
+		Orc->Update(dt);
 		if (count % 100 == 0) {
-			Orc->setHealth(Orc->getHealth() - 1);
+			Orc->setHealth(Orc->getHealth() - 1 * dt);
 			bars.setHealth(Orc->getHealth());
 			if (Orc->getHealth() < 0)
 				bars.setHealth(0);
