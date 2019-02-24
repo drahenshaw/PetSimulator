@@ -4,6 +4,7 @@
 #include "Creature.h"
 #include "Health_Bars.h"
 #include "Consumables.h"
+#include "Physics.h"
 
 
 int main(void)
@@ -54,6 +55,11 @@ int main(void)
 			bars.setHealth(Orc->getHealth());
 			if (Orc->getHealth() < 0)
 				bars.setHealth(0);
+		}
+
+		if (Physics::isColliding(*Orc, consume))
+		{
+			Orc->setHealth(150.0);
 		}
 	
 

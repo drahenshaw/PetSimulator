@@ -7,8 +7,8 @@
 class Physics
 {
 public:
-	float Absolute(float x);
-	bool isColliding(Creature & orc, Consumables & item);
+	static float Absolute(float x);
+	static bool isColliding(Creature & orc, Consumables & item);
 };
 
 
