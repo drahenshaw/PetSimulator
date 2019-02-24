@@ -11,6 +11,10 @@ public:
 	void setValue(int newMousePressed);
 	void setXAndY(int newx, int newy);
 	void setreleasedXAndY(int newx, int newy);
+	
+	int getXReleased() const;
+	int getYReleased() const;
+
 private:
 	int mousePressed;
 	int x;

@@ -48,3 +48,13 @@ void Consumables::setreleasedXAndY(int newx, int newy)
 	xreleased = newx;
 	yreleased = newy;
 }
+
+int Consumables::getXReleased() const
+{
+	return xreleased;
+}
+
+int Consumables::getYReleased() const
+{
+	return yreleased;
+}

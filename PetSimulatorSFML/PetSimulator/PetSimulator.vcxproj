@@ -115,6 +115,7 @@
     <ClCompile Include="Consumables.cpp" />
     <ClCompile Include="Creature.cpp" />
     <ClCompile Include="health_bars.cpp" />
+    <ClCompile Include="Physics.cpp" />
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -133,6 +134,7 @@
     <ClInclude Include="Consumables.h" />
     <ClInclude Include="Creature.h" />
     <ClInclude Include="Health_Bars.h" />
+    <ClInclude Include="Physics.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
