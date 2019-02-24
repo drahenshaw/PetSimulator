@@ -22,7 +22,7 @@ int main(void)
 	sf::Texture creature;
 	creature.loadFromFile("Assets/Creature 1.png");
 	sf::Sprite orcSprite(creature);
-	Creature * Orc = new Creature(150, 150, 150, 150, orcSprite);
+	Creature * Orc = new Creature(150.0, 150.0, 150.0, 150.0, orcSprite);
 
 	int count = 0;
 
@@ -91,22 +91,17 @@ int main(void)
 				bars.setThirst(0);
 		}
 
-		window.clear();
+		//window.clear();
 
 	    if (choice == 0)
 		{
 
 			Orc->setHealth(150.0);
-			consume.setreleasedXAndY(500, 550);
-
-			if (consume.getType() == Consumables::itemType::FOOD)
-			{
-				Orc->setHunger(150.0);
-			}
-			else
-			{
-				Orc->setThirst(150.0);
-			}
+			consume.setreleasedXAndY(500, 550);			
+			Orc->setHunger(150.0);			
+			Orc->setThirst(150.0);
+			Orc->setEnergy(150.0);
+			
 			
 
 			//background.drawBackground(window, Hamburger, Water, grass, toolBar);
@@ -120,7 +115,7 @@ int main(void)
 
 			Orc->setTick(count);
 
-			Orc->Update(.001);
+			Orc->Update(dt);
 			if (count % 100 == 0) {
 				Orc->setHealth(Orc->getHealth() - 1);
 				bars.setHealth(Orc->getHealth());
@@ -131,6 +126,17 @@ int main(void)
 			if (Physics::isColliding(*Orc, consume))
 			{
 				Orc->setHealth(150.0);
+				consume.setreleasedXAndY(500, 550);
+
+
+				if (consume.getType() == Consumables::itemType::FOOD)
+				{
+					Orc->setHunger(150.0);
+				}
+				else
+				{
+					Orc->setThirst(150.0);
+				}
 			}
 
 
@@ -183,8 +189,7 @@ int main(void)
 			menu.DisplayGameOver(window);
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) || sf::Mouse::isButtonPressed(sf::Mouse::Left))
 			{
-				choice = 0;
-				
+				choice = 0;				
 			}
 		}
 
