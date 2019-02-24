@@ -63,4 +63,18 @@ void Background::renderConstantConsumables(sf::Sprite &Hamburger, sf::Sprite &Wa
 	Water.setScale(0.05, 0.05);
 }
 
+void Background::drawGrassOnly(sf::RenderWindow &window, sf::Sprite &grass)
+{
+	for (int i = 0; i < 8; i++)
+	{
+		for (int j = 0; j < 6; j++)
+		{
+			grass.setPosition(i * 100, j * 100);
+			window.draw(grass);
+		}
+	}
+	grass.setPosition(0, 0);
+}
+
+
 
