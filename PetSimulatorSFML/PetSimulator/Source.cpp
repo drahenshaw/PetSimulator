@@ -27,6 +27,11 @@ int main(void)
 	sf::Sprite Water(temp2);
 	Water.setScale(0.05, 0.05);
 
+	sf::Texture creature;
+	creature.loadFromFile("Assets/Creature 1.png");
+	sf::Sprite orcSprite(creature);
+	Creature * Orc = new Creature(150, 150, 150, 150, orcSprite);
+
 	texture.loadFromFile("Assets/grass block.jpg");
 	
 
@@ -50,7 +55,7 @@ int main(void)
 				window.close();
 		}
 
-		//creature->Update(.001);
+		Orc->Update(.001);
 
 		window.clear();
 
@@ -74,7 +79,7 @@ int main(void)
 		window.draw(Water);
 		window.draw(Hamburger);
 
-
+		Orc->Render(window);
 		window.draw(bars.getEnergy());
 		window.draw(bars.getHealth());
 		window.draw(bars.getHunger());
